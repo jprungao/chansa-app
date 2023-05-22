@@ -4,19 +4,20 @@
     </div>
     <div class="app-navbar-content">
         <div class="app-navbar-user">
-            <img src="https://www.animeexplained.com/wp-content/uploads/2023/01/16e404bfeb2b8a8c11e05160b189a6ecb1b864cb-1280x720-1.jpg" alt="">
+            <img src="../../../assets/profile.jpg" alt="">
             <div class="app-navbar-user_heading">
                 <span class="greeting">Hello,</span>
-                <span>John Doe</span>
+                <span>Avelino Parungao</span>
             </div>
         </div>
         <div class="app-navbar-menu">
             <button>
                 <img src="../../assets/bell.svg" alt="">
             </button>
-            <button>
+            <button (click)="showMenu()">
                 <img src="../../assets/burger.svg" alt="">
             </button>
         </div>
     </div>
 </div>
+<app-menu [activeMenu]="activeMenu"></app-menu>

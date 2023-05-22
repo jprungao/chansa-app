@@ -1,1 +1,22 @@
-<p>menu works!</p>
+
+<div class="app-menu" [class.active]="activeMenu">
+    <div class="app-menu-content">
+        <button (click)="hideMenu()">
+            <img src="../../../assets/close.svg" alt="">
+        </button>
+        <ul>
+            <li>
+                <img src="../../../assets/user.svg" alt="">
+                Profile</li>
+            <li>
+                <img src="../../../assets/clock.svg" alt="">
+                Bet History</li>
+            <li>
+                <img src="../../../assets/users.svg" alt="">
+                Refer</li>
+            <li>
+                <img src="../../../assets/logout.svg" alt="">
+                Logout</li>
+        </ul>
+    </div>
+</div>

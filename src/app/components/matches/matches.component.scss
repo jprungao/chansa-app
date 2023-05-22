@@ -28,7 +28,7 @@
 
     &-items {
         height: 300px;
-        overflow: scroll;
+        overflow-y: scroll;
 
         .app-matches-item {
             display: block;
