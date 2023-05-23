@@ -1,3 +1,8 @@
+.app-wrapper {
+  padding: 20px;
+}
+
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -147,6 +152,12 @@
 
   img {
     border-style: none;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   /* Forms
