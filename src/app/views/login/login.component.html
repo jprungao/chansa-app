@@ -1,0 +1,27 @@
+<div class="app-login">
+    <img src="../../../assets/logo.png" alt="">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+            <input formControlName="username" type="text" placeholder="Username" required>
+            <div class="error" *ngIf="loginForm.get('username')?.errors && loginForm.get('username')?.touched">
+                Username is required
+            </div>
+        </div>
+        <div>
+            <input formControlName="password" type="password" placeholder="Password">
+            <div class="error" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+                Password is required
+            </div>
+        </div>
+        <div class="errors" *ngIf="errors">
+            <span *ngFor="let error of errors">
+                {{ error }}
+            </span>
+        </div>
+        <button type="submit">Log in</button>
+    </form>
+
+    <p class="company">
+        a product by <br> <span>Spambox Technology</span>
+    </p>
+</div>

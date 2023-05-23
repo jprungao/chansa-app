@@ -7,13 +7,13 @@ import { Router, ActivatedRoute } from '@angular/router'
   styleUrls: ['./featured.component.scss']
 })
 export class FeaturedComponent implements OnInit {
-  @Input() matchId = '';
+  @Input() matchId = null;
   isHome: boolean = false
 
   constructor(private router: Router) {}
 
 
   ngOnInit() {
-    this.isHome = this.router.url === '/' ? true : false
+    this.isHome = this.router.url === '/dashboard' ? true : false
   }
 }

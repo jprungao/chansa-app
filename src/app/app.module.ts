@@ -10,6 +10,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { InternalnavComponent } from './components/internalnav/internalnav.component';
 import { MatchComponent } from './views/match/match.component';
 import { FeaturedComponent } from './components/featured/featured.component';
+import { LoginComponent } from './views/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './services/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,13 +24,20 @@ import { FeaturedComponent } from './components/featured/featured.component';
     MatchesComponent,
     DashboardComponent,
     MenuComponent,
-    InternalnavComponent
+    InternalnavComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

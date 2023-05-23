@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,8 +9,16 @@ import { Component, Input } from '@angular/core';
 export class MenuComponent {
   @Input() activeMenu = false
 
+  constructor(private router: Router) {}
 
   hideMenu() {
     this.activeMenu = false
+  }
+
+  logout() {
+    this.router.navigate(['/login'])
+    localStorage.removeItem('JWT_TOKEN')
+
+
   }
 }

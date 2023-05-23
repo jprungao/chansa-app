@@ -1,28 +1,30 @@
-<div class="app-match" [class.home-nav]="isHome">
-    <div class="app-match-header">
-       <img src="../../assets/live.svg" alt="">
-       <span>LIVE NOW</span>
+<a [routerLink]="['/match', matchId]">
+    <div class="app-match" [class.home-nav]="isHome">
+        <div class="app-match-header">
+           <img src="../../assets/live.svg" alt="">
+           <span>LIVE NOW</span>
+        </div>
+        <div class="score-board">
+            <div class="team">
+                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/1c/Miami_Heat_-_Logo.svg/1200px-Miami_Heat_-_Logo.svg.png" alt="">
+                <span>
+                    Miami Heat
+                </span>
+            </div>
+            <div class="scores">
+                <span class="score">
+                    121 - 126
+                </span>
+                <span class="quarter">
+                    4TH QUARTER
+                </span>
+            </div>
+            <div class="team">
+                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/65/Celtics_de_Boston_logo.svg/1024px-Celtics_de_Boston_logo.svg.png" alt="">
+                <span>
+                    Boston Celtics
+                </span>
+            </div>
+        </div>
     </div>
-    <div class="score-board">
-        <div class="team">
-            <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/1c/Miami_Heat_-_Logo.svg/1200px-Miami_Heat_-_Logo.svg.png" alt="">
-            <span>
-                Miami Heat
-            </span>
-        </div>
-        <div class="scores">
-            <span class="score">
-                121 - 126
-            </span>
-            <span class="quarter">
-                4TH QUARTER
-            </span>
-        </div>
-        <div class="team">
-            <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/65/Celtics_de_Boston_logo.svg/1024px-Celtics_de_Boston_logo.svg.png" alt="">
-            <span>
-                Boston Celtics
-            </span>
-        </div>
-    </div>
-</div>
+</a>
