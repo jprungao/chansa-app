@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs'
+import * as MenuAction from '../../stores/menu.action'
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +10,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  activeMenu = false
+  @Input() user: any
+  menuState$: Observable<boolean>
 
-  showMenu() {
-    this.activeMenu = !this.activeMenu
-    console.log('burger clicked.')
+  constructor(private store: Store<{ menu: boolean}>) {
+    this.menuState$ = this.store.select('menu')
+  }
+
+
+  toggleMenu() {
+    this.store.dispatch(MenuAction.toggleMenu())
   }
 }

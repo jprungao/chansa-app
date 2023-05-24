@@ -2,7 +2,9 @@
     <div class="logo-container">
         <img src="../../assets/logo.png" alt="" class="logo">
         <span class="balance">
-            500.00 PHP
+            {{
+                user.creditPoints | currency: 'PHP': 'symbol': '1.2-2'
+            }}
         </span>
     </div>
     <div class="app-navbar-content">
@@ -10,17 +12,17 @@
             <img src="../../../assets/profile.jpg" alt="">
             <div class="app-navbar-user_heading">
                 <span class="greeting">Hello,</span>
-                <span>Avelino Parungao</span>
+                <span>{{ user.firstName }} {{ user.lastName }}</span>
             </div>
         </div>
         <div class="app-navbar-menu">
             <button>
                 <img src="../../assets/bell.svg" alt="">
             </button>
-            <button (click)="showMenu()">
+            <button (click)="toggleMenu()">
                 <img src="../../assets/burger.svg" alt="">
             </button>
         </div>
     </div>
 </div>
-<app-menu [activeMenu]="activeMenu"></app-menu>
+<app-menu></app-menu>

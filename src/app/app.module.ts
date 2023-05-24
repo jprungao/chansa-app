@@ -15,6 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './services/jwt.interceptor';
 
+import { StoreModule } from '@ngrx/store'
+import { menuReducer } from './stores/menu.reducer';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +36,7 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({ menu: menuReducer})
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

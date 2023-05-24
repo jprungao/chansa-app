@@ -1,7 +1,7 @@
 
-<div class="app-menu" [class.active]="activeMenu">
+<div class="app-menu" [class.active]="menuState$">
     <div class="app-menu-content">
-        <button (click)="hideMenu()">
+        <button (click)="toggleMenu()">
             <img src="../../../assets/close.svg" alt="">
         </button>
         <ul>

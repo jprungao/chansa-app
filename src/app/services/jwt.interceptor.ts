@@ -6,10 +6,10 @@ import {
     HttpErrorResponse
 } from '@angular/common/http'
 
-import { AuthService } from './auth.service'
-import { Observable, throwError } from 'rxjs'
+import { throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 import { Router } from '@angular/router'
+import { AuthService } from './auth/auth.service'
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor{
