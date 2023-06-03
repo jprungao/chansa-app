@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs'
-import * as MenuAction from '../../stores/menu.action'
+import * as MenuAction from '../../stores/app.action'
 
 @Component({
   selector: 'app-navbar',

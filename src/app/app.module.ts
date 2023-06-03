@@ -16,7 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './services/jwt.interceptor';
 
 import { StoreModule } from '@ngrx/store'
-import { menuReducer } from './stores/menu.reducer';
+import { menuReducer } from './stores/app.reducer';
 
 
 @NgModule({
