@@ -1,21 +1,5 @@
 .app-menu {
 
-    &:after {
-        transition: all .3s ease;
-        opacity: 0;
-        position: fixed;
-        content: "";
-        background: #000;
-        opacity: 0;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-
-    }
 
     &.active {
 
@@ -92,5 +76,26 @@
                 margin-right: 15px;
             }
         }
+    }
+}
+
+.app-menu-shadow {
+    transition: all 0.3s ease;
+    opacity: 0;
+    position: fixed;
+    content: "";
+    background: #000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    &.active {
+        
+    z-index: 1;
+    opacity: 0.3;
     }
 }
