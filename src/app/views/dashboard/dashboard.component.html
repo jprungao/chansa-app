@@ -1,6 +1,6 @@
 
-<app-navbar [user]="user"></app-navbar>
+<app-navbar [user]="user$ | async"></app-navbar>
 <div class="app-wrapper">
     <app-featured></app-featured>
-    <app-matches></app-matches>
+    <app-categories></app-categories>
 </div>

@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store, select } from '@ngrx/store'
-import { toggleMenu } from 'src/app/stores/app.action';
+import { ToggleMenu } from 'src/app/states/app.action';
 import { Observable } from 'rxjs'
-import { AppState } from 'src/app/stores/app.reducer';
+import { AppState } from 'src/app/states/app.reducer';
 
 @Component({
   selector: 'app-menu',
@@ -15,11 +15,11 @@ export class MenuComponent {
   menuState$: Observable<Boolean>
 
   constructor(private router: Router, private store: Store<AppState>) {
-    this.menuState$ = store.pipe(select((state: any) => state.menu?.menu))
+    this.menuState$ = store.pipe(select((state: any) => state.app?.menu))
   }
 
   toggleMenu() {
-    this.store.dispatch(toggleMenu())
+    this.store.dispatch(ToggleMenu())
   }
 
   logout() {

@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http'
 
 import { tap } from 'rxjs/operators'
 import { ConfigService } from '../config.service';
+import { Observable } from 'rxjs'
+import { User } from 'src/app/models/user.model';
+import { Credentials } from 'src/app/models/userCredential.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +15,8 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private configService: ConfigService) { }
 
-  login(credentials: any) {
-    return this.httpClient.post(`${this.configService.apiHost}/auth/login`, credentials).pipe(tap((data: any) => {
-      console.log(data)
-      localStorage.setItem(this.JWT_TOKEN, data.response.token)
-      localStorage.setItem('user', JSON.stringify(data.response.user))
-    }))
+  login(credentials: any): Observable<any> {
+    return this.httpClient.post<User>(`${this.configService.apiHost}/auth/login`, credentials)
   }
 
   isLoggedIn() {

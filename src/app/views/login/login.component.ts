@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,15 +22,11 @@ export class LoginComponent {
     this.errors = []
     if (this.loginForm.valid) {
       // Perform the login action
-      this.authService.login(this.loginForm.value).subscribe(() => {
+      this.authService.login(this.loginForm.value).subscribe((res) => {
         this.router.navigate(['/'])
-      }, (error => {
-        if(error) {
-          error.error.message.forEach((msg:string) => {
-            this.errors.push(msg)
-          })
-        }
-      }));
+        console.log(res)
+        localStorage.setItem('JWT_TOKEN', res)
+      });
     } else {
       // Trigger validation for all fields
       this.loginForm.markAllAsTouched();

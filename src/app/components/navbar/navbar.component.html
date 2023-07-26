@@ -3,7 +3,7 @@
         <img src="../../assets/logo.png" alt="" class="logo">
         <span class="balance">
             {{
-                user.creditPoints | currency: 'PHP': 'symbol': '1.2-2'
+                user?.creditPoints | currency: 'PHP': 'symbol': '1.2-2'
             }}
         </span>
     </div>
@@ -12,7 +12,7 @@
             <img src="../../../assets/profile.jpg" alt="">
             <div class="app-navbar-user_heading">
                 <span class="greeting">Hello,</span>
-                <span>{{ user.firstName }} {{ user.lastName }}</span>
+                <span>{{ user?.firstName }} {{ user?.lastName }}</span>
             </div>
         </div>
         <div class="app-navbar-menu">

@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
 
-import { Store } from '@ngrx/store'
+import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
-import * as MenuAction from '../../stores/app.action'
+import { User } from 'src/app/models/user.model';
+import { ToggleMenu } from 'src/app/states/app.action';
+import { AppState } from 'src/app/states/app.reducer';
 
 @Component({
   selector: 'app-navbar',
@@ -10,15 +12,15 @@ import * as MenuAction from '../../stores/app.action'
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  @Input() user: any
+  @Input() user: User | null = null
   menuState$: Observable<boolean>
 
-  constructor(private store: Store<{ menu: boolean}>) {
-    this.menuState$ = this.store.select('menu')
+  constructor(private store: Store<{ app: AppState }>) {
+    this.menuState$ = this.store.pipe(select(state => state.app.menu))
   }
 
 
   toggleMenu() {
-    this.store.dispatch(MenuAction.toggleMenu())
+    this.store.dispatch(ToggleMenu())
   }
 }

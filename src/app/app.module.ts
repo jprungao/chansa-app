@@ -16,7 +16,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './services/jwt.interceptor';
 
 import { StoreModule } from '@ngrx/store'
-import { menuReducer } from './stores/app.reducer';
+import { EffectsModule } from '@ngrx/effects'
+import { AppReducer } from './states/app.reducer';
+import { AuthEffects } from './states/auth.effects';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoryItemComponent } from './components/categoryItem/categoryitem.component';
 
 
 @NgModule({
@@ -29,14 +33,17 @@ import { menuReducer } from './stores/app.reducer';
     DashboardComponent,
     MenuComponent,
     InternalnavComponent,
-    LoginComponent
+    LoginComponent,
+    CategoryItemComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ menu: menuReducer})
+    StoreModule.forRoot({ app: AppReducer}),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

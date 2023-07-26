@@ -13,7 +13,8 @@ export class UserService {
   constructor(private http: HttpClient, private configService: ConfigService) { }
 
   async getUser(id: string): Promise<any> {
-    return this.http.get(`${this.configService.apiHost}/users/${id}`).pipe(tap((data: any) => {
+    return this.http.get(`${this.configService.apiHost}/users/${id}`)
+    .pipe(tap((data: any) => {
       return data.response
     }))
   }
