@@ -15,7 +15,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient, private configService: ConfigService) { }
 
-  login(credentials: any): Observable<any> {
+  login(credentials: Credentials) {
     return this.httpClient.post<User>(`${this.configService.apiHost}/auth/login`, credentials)
   }
 

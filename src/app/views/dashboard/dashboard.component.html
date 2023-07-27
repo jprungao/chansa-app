@@ -1,5 +1,7 @@
 
-<app-navbar [user]="user$ | async"></app-navbar>
+<app-navbar [user]="user$ | async">
+    {{ user$ | async}}
+</app-navbar>
 <div class="app-wrapper">
     <app-featured></app-featured>
     <app-categories></app-categories>

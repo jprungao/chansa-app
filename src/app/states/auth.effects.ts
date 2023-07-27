@@ -1,19 +1,36 @@
 import { Injectable } from '@angular/core'
 import { Login, LoginFailure, LoginSuccess } from './app.action'
 
-import { Credentials } from '../models/userCredential.model'
 import { AuthService } from '../services/auth/auth.service'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { exhaustMap, of } from 'rxjs'
-import { catchError } from 'rxjs/operators'
+import { catchError, concatMap, map, tap } from 'rxjs/operators'
 import { User } from '../models/user.model'
-import { Action } from '@ngrx/store'
-import { Observable } from 'rxjs'
+import { Router } from '@angular/router'
 
 @Injectable()
 export class AuthEffects {
-    login$ = ''
+    login$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(Login),
+            exhaustMap((action) =>
+                this.authService.login(action.credentials).pipe(
+                    map((user: User) => LoginSuccess({user})),
+                    catchError((err) => of({type: '[Login] LoginFailure', payload: err}))
+                , tap((action: any) => {
+                    if(action.type.includes('LoginSuccess')) {
+                        this.router.navigate(['/dashboard'])
+                        localStorage.setItem('JWT_TOKEN', action.user.token)
+                    }
+                }))
+            )
+        ),
+        { functional: true}
+    )
 
-
-    constructor(private actions$: Actions, private authService: AuthService) {}
+    constructor(
+        private actions$: Actions,
+        private authService: AuthService,
+        private router: Router
+    ) { }
 }

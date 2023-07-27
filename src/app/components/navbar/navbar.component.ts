@@ -11,8 +11,18 @@ import { AppState } from 'src/app/states/app.reducer';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  @Input() user: User | null = null
+export class NavbarComponent  {
+  @Input() user: User | any = {
+    email: '',
+    username: '',
+    firstName: '',
+    lastName: '',
+    phone: 0,
+    dob: '',
+    roles: [],
+    referralCode: '',
+    creditPoints: 0,
+  };
   menuState$: Observable<boolean>
 
   constructor(private store: Store<{ app: AppState }>) {

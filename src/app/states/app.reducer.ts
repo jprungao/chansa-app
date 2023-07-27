@@ -18,11 +18,10 @@ export const initialState: AppState = {
     error: null
 }
 
-
 export const AppReducer = createReducer(
     initialState,
     on(Actions.ToggleMenu, (state) => ({...state, menu: !state.menu})),
     on(Actions.Login, (state => ({...state, loading: true, error: null}))),
-    on(Actions.LoginSuccess, (state, { user }) => ({ ...state, user, loading: false})),
+    on(Actions.LoginSuccess, (state, { user }) => ({ ...state, ...user, loading: false})),
     on(Actions.LoginFailure, (state ,{ error }) => ({ ...state, error, loading: false}))
 )
