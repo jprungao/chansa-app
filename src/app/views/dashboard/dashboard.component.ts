@@ -13,9 +13,9 @@ import { select } from '@ngrx/store'
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent{
-  user$: Observable<User>
+  user$: Observable<User | null>
 
-  constructor(private store: Store<{app: AppState | any}>) {
-    this.user$ = this.store.select(state => state.app.user)
+  constructor(private store: Store<{app: AppState}>) {
+    this.user$ = this.store.select((state) => state.app.user)
   }
 }

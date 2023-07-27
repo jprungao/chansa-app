@@ -26,6 +26,6 @@ export class MenuComponent {
     this.router.navigate(['/login'])
     localStorage.removeItem('JWT_TOKEN')
     localStorage.removeItem('user')
-
+    this.toggleMenu()
   }
 }
